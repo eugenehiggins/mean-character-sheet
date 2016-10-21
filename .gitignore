@@ -1,0 +1,4 @@
+.DS_Store
+*.zip
+public/js/app/
+node_modules/
