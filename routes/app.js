@@ -4,11 +4,17 @@ var Character = require('../models/character');
 
 router.get('/', function (req, res, next) {
 
-	Character.findOne({'name':'mordor'}, 'name', function (err,char){
+    res.render('index');
+});
+
+router.get('/:name', function (req, res, next) {
+
+	Character.findOne({'name': req.param.name}, 'name', function (err,char){
 		if (err) return 'Error! ' + err;
-		console.log(char.name);
+		//console.log(char.name);
 	})
-    res.render('index',{character: char});
+    res.render('index');
+    //res.render('index',{character: char});
 });
 
 router.post('/', function(req, res, next) {
