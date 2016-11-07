@@ -1,16 +1,35 @@
 import { Injectable }   from '@angular/core';
-import { Http }     from '@angular/http';
-import 'rxjs/add/operator/map';
+import {Http, Response}     from '@angular/http';
+import 'rxjs/Rx';
+import { Observable } from "rxjs";
+
+
+import {Character} from "../models/character.model";
 
 @Injectable()
 export class CharacterService{
+  private character: Character;
 
-  constructor(private _http: Http){
+  constructor(private http: Http){
 
   }
 
-  getChar(){
-    // return this._http.get('/char')
-    //   .map(res => res.json());
+  getCharacter(){
+    return this.http.get('http://localhost:3000/character')
+        .map((response: Response) => {
+          const character = response.json().obj;
+          return character;
+        })
+        .catch((error: Response) => Observable.throw(error.json()));
   }
+
+  getDetails() {
+      return this.character.details
+  }
+
+  editDetails(character: Character){
+    const body = JSON.stringify(character);
+  }
+
+
 }

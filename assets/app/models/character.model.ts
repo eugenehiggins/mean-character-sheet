@@ -1,5 +1,12 @@
 export class Character{
+    details: {
+        level: string
+    };
+
   constructor (
-    public name: string
-    ) {}
+    details: { level: string }
+    ) {
+      this.details.level = level;
+      this.name = name;
+  }
 }

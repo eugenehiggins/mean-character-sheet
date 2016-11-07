@@ -11,7 +11,6 @@ router.get('/:name', function (req, res, next) {
 
 	Character.findOne({'name': req.param.name}, 'name', function (err,char){
 		if (err) return 'Error! ' + err;
-		//console.log(char.name);
 	})
     res.render('index');
     //res.render('index',{character: char});

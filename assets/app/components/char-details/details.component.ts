@@ -1,27 +1,28 @@
-import { Component } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { NgForm}            from "@angular/forms";
 
 import { CharacterService } from '../../services/character.service';
 import { Character }        from '../../models/character.model';
 
 @Component({
-    selector: 'char-details',
+    selector: 'character-details',
     templateUrl: './details.component.html'
 })
-export class DetailsComponent {
-  char: Character;
+export class DetailsComponent implements OnInit{
+  @Input() character: Character;
+  details: any = {
+      level: ""
+  };
 
-  constructor(private _charService: CharacterService){
 
+  constructor(private characterService: CharacterService){
+      //
   }
   onSubmit(form: NgForm){
-
+      //console.log(this.character);
   }
 
   ngOnInit(){
-    // this._charService.getChar()
-    // .subscribe(char => {
-    //   this.char = char;
-    // })
+    this.characterService.getDetails()
   }  
 }

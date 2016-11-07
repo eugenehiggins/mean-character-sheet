@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule }    from '@angular/http';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 import { AppComponent } from "./app.component";
 
 import { DetailsComponent }  from './components/char-details/details.component';
-import {FormsModule} from "@angular/forms";
+import {CharacterService} from "./services/character.service";
 
 @NgModule({
     declarations: [
@@ -15,7 +16,11 @@ import {FormsModule} from "@angular/forms";
     imports: [
         BrowserModule,
         HttpModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
+    ],
+    providers: [
+      CharacterService
     ],
     bootstrap: [AppComponent]
 })

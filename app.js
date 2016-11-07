@@ -43,7 +43,7 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use('/char', charRoutes)
+app.use('/character', charRoutes)
 app.use('/', appRoutes);
 
 // catch 404 and forward to error handler
